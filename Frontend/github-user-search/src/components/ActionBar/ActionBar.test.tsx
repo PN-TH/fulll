@@ -28,7 +28,7 @@ const renderActionBar = (isEditing: boolean) => {
 describe("ActionBar", () => {
   it("should return correct count of users", () => {
     renderActionBar(false);
-    expect(screen.getByText("3 element")).toBeInTheDocument();
+    expect(screen.getByText("3 elements")).toBeInTheDocument();
   });
 
   it("should return correct count of selectedUsers", () => {

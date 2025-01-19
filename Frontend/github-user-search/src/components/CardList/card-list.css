@@ -1,9 +1,9 @@
 .cardList {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 16px;
-  max-height: 67vh;
-  padding: 4px;
+  max-height: 64vh;
+  padding: 16px;
   overflow-y: auto;
   overflow-x: hidden;
   border: 1px solid #ccc;

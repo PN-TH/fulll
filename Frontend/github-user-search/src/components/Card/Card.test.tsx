@@ -1,13 +1,17 @@
 import { render, screen, fireEvent } from "@testing-library/react";
+import { IUser } from "../../interfaces/users";
 import Card from "./Card";
 
 describe("Card", () => {
   const mockSetSelectedUsers = jest.fn();
 
   const defaultProps = {
-    id: 1,
-    login: "john-doe-react",
-    avatar: "react.svg",
+    user: {
+      id: 1,
+      login: "john-doe-react",
+      avatar_url: "react.svg",
+      html_url: "",
+    } as IUser,
     selectedUsers: [],
     setSelectedUsers: mockSetSelectedUsers,
     isEditing: false,

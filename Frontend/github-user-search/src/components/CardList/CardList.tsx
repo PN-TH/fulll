@@ -20,9 +20,7 @@ const CardList = ({
       {users.map((user) => (
         <Card
           key={user.id}
-          id={user.id}
-          login={user.login}
-          avatar={user.avatar_url}
+          user={user}
           selectedUsers={selectedUsers}
           setSelectedUsers={setSelectedUsers}
           isEditing={isEditing}

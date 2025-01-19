@@ -1,5 +1,5 @@
 .editMode {
-  padding: 8px 14px;
+  padding: 8px 20px;
 }
 
 .actionBar {
@@ -23,12 +23,6 @@
 
 .actionBar img:hover {
   transform: scale(0.97);
-}
-
-.counter {
-  display: flex;
-  align-items: center;
-  gap: 16px;
 }
 
 .customCheckbox input[type="checkbox"] {
@@ -64,4 +58,9 @@
   height: 2px;
   background-color: #007bff;
   transform: translateY(-50%);
+}
+
+.icons {
+  display: flex;
+  gap: 16px;
 }

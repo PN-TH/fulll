@@ -1,11 +1,10 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { sliceText } from "../../utils/utils";
 import "./card.css";
+import { IUser } from "../../interfaces/users";
 
 interface ICardProps {
-  id: number;
-  login: string;
-  avatar: string;
+  user: IUser;
   selectedUsers: number[];
   setSelectedUsers: Dispatch<SetStateAction<number[]>>;
   isEditing: boolean;
@@ -17,9 +16,7 @@ const labels = {
 };
 
 const Card = ({
-  id,
-  login,
-  avatar,
+  user: { id, login, avatar_url, html_url },
   selectedUsers,
   setSelectedUsers,
   isEditing,
@@ -46,13 +43,15 @@ const Card = ({
         />
       )}
       <div className="cardContent">
-        <img src={avatar} alt={labels.avatar} className="avatar" />
+        <img src={avatar_url} alt={labels.avatar} className="avatar" />
         <div>
           <p>{id}</p>
           <p>{sliceText(login, 8)}</p>
         </div>
       </div>
-      <button className="button">{labels.viewProfile}</button>
+      <a href={html_url} target="_blank" rel="noreferrer">
+        <button className="button">{labels.viewProfile}</button>
+      </a>
     </div>
   );
 };

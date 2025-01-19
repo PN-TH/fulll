@@ -94,7 +94,7 @@ const ActionBar = ({
           </label>
         ) : (
           <p className="userCounter">
-            {users.length} {pluralizeText(selectedUsers.length, labels.element)}
+            {users.length} {pluralizeText(users.length, labels.element)}
           </p>
         )}
         {isEditing && (

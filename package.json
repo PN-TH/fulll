@@ -1,0 +1,21 @@
+{
+  "name": "hiring",
+  "version": "1.0.0",
+  "description": "Space dedicated to the hiring process at [Fulll](https://www.fulll.fr).  If you're looking for a specific job offer, check our current list of [opened positions](https://www.welcometothejungle.com/fr/companies/fulll).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PN-TH/fulll.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/PN-TH/fulll/issues"
+  },
+  "homepage": "https://github.com/PN-TH/fulll#readme"
+}
