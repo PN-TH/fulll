@@ -1,0 +1,67 @@
+.editMode {
+  padding: 8px 14px;
+}
+
+.actionBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.actionContent {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+}
+
+.actionBar img {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.actionBar img:hover {
+  transform: scale(0.97);
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.customCheckbox input[type="checkbox"] {
+  display: none;
+}
+
+.customCheckbox {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  padding: 8px;
+}
+
+.customCheckbox .customCheckmark {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #007bff;
+  border-radius: 4px;
+  background-color: #fff;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+}
+
+.customCheckbox input[type="checkbox"]:checked + .customCheckmark::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  width: 50%;
+  height: 2px;
+  background-color: #007bff;
+  transform: translateY(-50%);
+}

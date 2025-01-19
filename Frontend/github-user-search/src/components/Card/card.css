@@ -1,0 +1,52 @@
+.card {
+  position: relative;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100px;
+  box-sizing: border-box;
+}
+
+.checkbox {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-bottom: 8px;
+}
+
+.button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  align-self: center;
+  margin-top: auto;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}

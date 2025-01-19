@@ -1,0 +1,18 @@
+.cardListContainer {
+  position: fixed;
+  top: 28%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  background-color: #fff;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.error {
+  color: red;
+}
+
+p {
+  text-align: center;
+}

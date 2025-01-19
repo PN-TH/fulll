@@ -13,9 +13,9 @@
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
     "jsx": "react-jsx",
-    "target": "ES6",
-    "lib": ["DOM", "ES6"],
-    "types": ["@testing-library/jest-dom"]
+    "target": "es2020",
+    "lib": ["DOM", "es2020"],
+    "types": ["@testing-library/jest-dom", "node", "jest"]
   },
   "include": ["src"]
 }
