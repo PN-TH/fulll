@@ -63,10 +63,12 @@ const ActionBar = ({
       id: newId++,
     }));
     setUsers((prevUsers) => [...prevUsers, ...duplicatedUsers]);
-    // Scroll to the bottom of the card list
-    cardListRef?.current?.scrollTo({
-      top: cardListRef.current.scrollHeight,
-      behavior: "smooth",
+    // Use requestAnimationFrame with ref to scroll to the bottom of the list when duplicating
+    requestAnimationFrame(() => {
+      cardListRef?.current?.scrollTo({
+        top: cardListRef.current.scrollHeight,
+        behavior: "smooth",
+      });
     });
     // Clear selectedUsers after duplicating
     setSelectedUsers([]);
