@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, RefObject, SetStateAction } from "react";
 import "./action-bar.css";
 import { IUser } from "../../interfaces/users";
 import { pluralizeText } from "../../utils/utils";
@@ -10,6 +10,7 @@ interface ISelectedCounterProps {
   users: IUser[];
   setIsEditing: Dispatch<SetStateAction<boolean>>;
   isEditing: boolean;
+  cardListRef?: RefObject<HTMLDivElement | null>;
 }
 
 const labels = {
@@ -29,10 +30,16 @@ const ActionBar = ({
   users,
   setIsEditing,
   isEditing,
+  cardListRef,
 }: ISelectedCounterProps) => {
+  // Check if all users are selected
   const allUsersSelected =
     selectedUsers.length === users.length && users.length > 0;
 
+  // Check if there are any selected users
+  const hasSelectedUsers = selectedUsers.length > 0;
+
+  // Remove selected users from the list of users
   const handleDelete = () => {
     const updatedUsers = users.filter(
       (user) => !selectedUsers.includes(user.id)
@@ -41,11 +48,13 @@ const ActionBar = ({
     setSelectedUsers([]);
   };
 
+  // Duplicate selected users and add them to the list of users
   const handleDuplicate = () => {
     const usersToDuplicate = users.filter((user) =>
       selectedUsers.includes(user.id)
     );
 
+    // Find the max ID in the list of users and increment it
     const maxId = Math.max(...users.map((u) => u.id), 0);
     let newId = maxId + 1;
 
@@ -53,17 +62,28 @@ const ActionBar = ({
       ...user,
       id: newId++,
     }));
-    setUsers((prevUsers) => [...duplicatedUsers, ...prevUsers]);
+    setUsers((prevUsers) => [...prevUsers, ...duplicatedUsers]);
+    // Scroll to the bottom of the card list
+    cardListRef?.current?.scrollTo({
+      top: cardListRef.current.scrollHeight,
+      behavior: "smooth",
+    });
+    // Clear selectedUsers after duplicating
+    setSelectedUsers([]);
   };
 
+  /**
+   * Handle the change event of the select all checkbox
+   */
   const handleSelectAllChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const isChecked = event.target.checked;
     if (isChecked) {
-      const allUsersIds = users.map((user) => user.id);
-      const set = new Set([...selectedUsers, ...allUsersIds]);
-      setSelectedUsers(Array.from(set));
+      const allUserIds = users.map((user) => user.id);
+      // Combine current and all user IDs, removing duplicates with Set
+      const uniqueIds = new Set([...selectedUsers, ...allUserIds]);
+      setSelectedUsers(Array.from(uniqueIds));
     } else {
       setSelectedUsers([]);
     }
@@ -75,12 +95,12 @@ const ActionBar = ({
         <button
           className="button"
           onClick={() => setIsEditing((isEditing) => !isEditing)}>
-          {isEditing ? "Exit Edit Mode" : "Enter Edit Mode"}
+          {isEditing ? labels.exitEditMode : labels.enterEditMode}
         </button>
       </div>
       <div className="actionBar">
         {isEditing ? (
-          <label className="customCheckbox">
+          <label className="userCounter" htmlFor="selectAllCheckbox">
             <input
               id="selectAllCheckbox"
               type="checkbox"
@@ -93,11 +113,14 @@ const ActionBar = ({
             {labels.selected}
           </label>
         ) : (
-          <p className="userCounter">
-            {users.length} {pluralizeText(users.length, labels.element)}
-          </p>
+          // Display the number of users and the pluralized text
+          <div className="userCounter">
+            <span>
+              {users.length} {pluralizeText(users.length, labels.element)}
+            </span>
+          </div>
         )}
-        {isEditing && (
+        {isEditing && hasSelectedUsers && (
           <div className="icons">
             <img
               src="/assets/icons/trash.svg"

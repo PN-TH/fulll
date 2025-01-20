@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IGetUsersResponse, IUser } from "../../interfaces/users";
 import { fetchUsers } from "../../services/userService";
 import { useFetch } from "../../hooks/useFetch/useFetch";
@@ -6,6 +6,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import ActionBar from "../ActionBar/ActionBar";
 import CardList from "../CardList/CardList";
 import "./home.css";
+import ErrorToast from "../ErrorToast/ErrorToast";
 
 const labels = {
   loading: "Loading...",
@@ -19,15 +20,22 @@ const Home = () => {
   const [users, setUsers] = useState<IUser[]>([]);
   const [isEditing, setIsEditing] = useState(false);
   const [selectedUsers, setSelectedUsers] = useState<number[]>([]);
+  const cardListRef = useRef<HTMLDivElement>(null);
 
+  // Custom hook to fetch data with the fetch function as a parameters
   const { data, loading, error } = useFetch<IGetUsersResponse | null>(
     () => fetchUsers(query),
     [query]
   );
 
+  // Check if the error is a rate limit error
   const isRateLimitError =
     error &&
     (error.includes("403") || error.toLowerCase().includes("rate limit"));
+
+  // Check if the action bar should be rendered
+  const shouldRenderActionBar =
+    !error && query.length > 0 && !loading && users && users.length > 0;
 
   useEffect(() => {
     setSelectedUsers([]);
@@ -37,9 +45,9 @@ const Home = () => {
   }, [data]);
 
   return (
-    <section>
+    <section className="home">
       <SearchBar query={query} setQuery={setQuery} />
-      {!error && query.length > 0 && !loading && (
+      {shouldRenderActionBar && (
         <ActionBar
           selectedUsers={selectedUsers}
           setSelectedUsers={setSelectedUsers}
@@ -47,17 +55,14 @@ const Home = () => {
           setUsers={setUsers}
           isEditing={isEditing}
           setIsEditing={setIsEditing}
+          cardListRef={cardListRef}
         />
       )}
       {loading && <p>{labels.loading}</p>}
       {isRateLimitError ? (
-        <p className="error">{labels.rateLimitExceeded}</p>
+        <ErrorToast message={labels.rateLimitExceeded} />
       ) : (
-        error && (
-          <p className="error">
-            {labels.error}: {error}
-          </p>
-        )
+        error && <ErrorToast message={`${labels.error} ${error}`} />
       )}
       {users && users.length > 0 && !loading ? (
         <div className="cardListContainer">
@@ -66,6 +71,7 @@ const Home = () => {
             selectedUsers={selectedUsers}
             setSelectedUsers={setSelectedUsers}
             isEditing={isEditing}
+            cardListRef={cardListRef}
           />
         </div>
       ) : (

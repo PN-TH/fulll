@@ -1,7 +1,7 @@
-import React, { Dispatch, SetStateAction } from "react";
+import { ChangeEvent, Dispatch, SetStateAction } from "react";
 import { sliceText } from "../../utils/utils";
-import "./card.css";
 import { IUser } from "../../interfaces/users";
+import "./card.css";
 
 interface ICardProps {
   user: IUser;
@@ -21,7 +21,7 @@ const Card = ({
   setSelectedUsers,
   isEditing,
 }: ICardProps) => {
-  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
     const isChecked = event.target.checked;
     setSelectedUsers((users) => {
       if (isChecked) {
@@ -44,7 +44,8 @@ const Card = ({
       )}
       <div className="cardContent">
         <img src={avatar_url} alt={labels.avatar} className="avatar" />
-        <div>
+
+        <div className="userInfo">
           <p>{id}</p>
           <p>{sliceText(login, 8)}</p>
         </div>

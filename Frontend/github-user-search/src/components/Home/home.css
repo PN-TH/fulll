@@ -1,18 +1,22 @@
+.home p {
+  text-align: center;
+}
+
 .cardListContainer {
   position: fixed;
   top: 28%;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  background-color: #fff;
+  background-color: var(--white);
   padding: 16px;
   overflow-y: auto;
 }
 
 .error {
-  color: red;
+  color: var(--error);
 }
 
-p {
+.cardListContainer p {
   text-align: center;
 }

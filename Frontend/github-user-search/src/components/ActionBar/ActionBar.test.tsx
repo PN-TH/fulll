@@ -68,7 +68,7 @@ describe("ActionBar", () => {
     const duplicateButton = screen.getByAltText("Duplicate");
     fireEvent.click(duplicateButton);
 
-    const expectedUsers = [{ id: 4, login: "User 1" }, ...mockUsers];
+    const expectedUsers = [...mockUsers, { id: 4, login: "User 1" }];
 
     expect(mockSetUsers).toHaveBeenCalledWith(expect.any(Function));
     const updaterFunction = mockSetUsers.mock.calls[0][0];

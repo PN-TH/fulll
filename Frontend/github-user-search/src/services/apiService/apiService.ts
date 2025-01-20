@@ -5,6 +5,7 @@ interface RequestOptions {
     headers?: Headers
 };
 
+// This function do a fetch request to the given endpoint and return the response
 export const apiService = async (endpoint: string, options: RequestOptions = {}) => {
     const { method = 'GET', headers = {} } = options;
     try {

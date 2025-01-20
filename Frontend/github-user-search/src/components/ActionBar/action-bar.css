@@ -25,11 +25,11 @@
   transform: scale(0.97);
 }
 
-.customCheckbox input[type="checkbox"] {
+.userCounter input[type="checkbox"] {
   display: none;
 }
 
-.customCheckbox {
+.userCounter {
   display: flex;
   gap: 8px;
   align-items: center;
@@ -38,25 +38,25 @@
   padding: 8px;
 }
 
-.customCheckbox .customCheckmark {
+.userCounter .customCheckmark {
   display: block;
   width: 12px;
   height: 12px;
-  border: 2px solid #007bff;
+  border: 2px solid var(--primary-color);
   border-radius: 4px;
-  background-color: #fff;
+  background-color: var(--white);
   position: relative;
   transition: all 0.2s ease-in-out;
 }
 
-.customCheckbox input[type="checkbox"]:checked + .customCheckmark::before {
+.userCounter input[type="checkbox"]:checked + .customCheckmark::before {
   content: "";
   position: absolute;
   top: 50%;
   left: 25%;
   width: 50%;
   height: 2px;
-  background-color: #007bff;
+  background-color: var(--primary-color);
   transform: translateY(-50%);
 }
 

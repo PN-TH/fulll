@@ -17,6 +17,7 @@ describe("CardList", () => {
         selectedUsers={[]}
         setSelectedUsers={mockSetSelectedUsers}
         isEditing={false}
+        cardListRef={{ current: null }}
       />
     );
 

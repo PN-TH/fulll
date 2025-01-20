@@ -1,4 +1,5 @@
 .cardList {
+  margin: 8px;
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
@@ -6,6 +7,5 @@
   padding: 16px;
   overflow-y: auto;
   overflow-x: hidden;
-  border: 1px solid #ccc;
-  margin: 8px;
+  border: 1px solid var(--secondary-color);
 }
