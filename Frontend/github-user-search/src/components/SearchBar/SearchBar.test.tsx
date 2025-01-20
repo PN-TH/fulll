@@ -7,10 +7,6 @@ jest.mock("../../hooks/useDebounce/useDebounce");
 describe("SearchBar", () => {
   const mockSetQuery = jest.fn();
 
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
   it("should render the search bar correctly", () => {
     render(<SearchBar query="react" setQuery={mockSetQuery} />);
     const input = screen.getByPlaceholderText("Search");
@@ -20,7 +16,7 @@ describe("SearchBar", () => {
   it("should call setQuery when input value changes", () => {
     (useDebounce as jest.Mock).mockImplementation((value) => value);
 
-    render(<SearchBar query="react" setQuery={mockSetQuery} />);
+    render(<SearchBar query="" setQuery={mockSetQuery} />);
     const input = screen.getByPlaceholderText("Search");
 
     fireEvent.change(input, { target: { value: "angular" } });

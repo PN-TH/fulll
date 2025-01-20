@@ -7,7 +7,6 @@ interface RequestOptions {
 
 export const apiService = async (endpoint: string, options: RequestOptions = {}) => {
     const { method = 'GET', headers = {} } = options;
-
     try {
         const response = await fetch(`${BASE_URL}${endpoint}`, {
             method,
@@ -24,7 +23,6 @@ export const apiService = async (endpoint: string, options: RequestOptions = {})
 
         return response.json();
     } catch (error) {
-        console.error('Error: ', error);
         throw error;
     }
 };

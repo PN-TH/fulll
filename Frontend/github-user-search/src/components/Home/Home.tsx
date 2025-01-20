@@ -31,6 +31,7 @@ const Home = () => {
 
   useEffect(() => {
     setSelectedUsers([]);
+    setIsEditing(false);
     if (data) setUsers(data.items);
     else setUsers([]);
   }, [data]);
