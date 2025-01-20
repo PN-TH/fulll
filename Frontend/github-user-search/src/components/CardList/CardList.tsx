@@ -18,16 +18,18 @@ const CardList = ({
   cardListRef,
 }: ICardListProps) => {
   return (
-    <div className="cardList" ref={cardListRef}>
-      {users.map((user) => (
-        <Card
-          key={user.id}
-          user={user}
-          selectedUsers={selectedUsers}
-          setSelectedUsers={setSelectedUsers}
-          isEditing={isEditing}
-        />
-      ))}
+    <div className="cardListContainer" ref={cardListRef}>
+      <div className="cardList">
+        {users.map((user) => (
+          <Card
+            key={user.id}
+            user={user}
+            selectedUsers={selectedUsers}
+            setSelectedUsers={setSelectedUsers}
+            isEditing={isEditing}
+          />
+        ))}
+      </div>
     </div>
   );
 };

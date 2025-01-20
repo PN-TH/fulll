@@ -122,19 +122,19 @@ const ActionBar = ({
             </span>
           </div>
         )}
-        {isEditing && hasSelectedUsers && (
+        {isEditing && (
           <div className="icons">
             <img
               src="/assets/icons/trash.svg"
               alt={labels.delete}
-              className="icon"
-              onClick={handleDelete}
+              className={`icon ${!hasSelectedUsers ? "disabled" : ""}`}
+              onClick={hasSelectedUsers ? handleDelete : undefined}
             />
             <img
               src="/assets/icons/copy.svg"
               alt={labels.duplicate}
-              className="icon"
-              onClick={handleDuplicate}
+              className={`icon ${!hasSelectedUsers ? "disabled" : ""}`}
+              onClick={hasSelectedUsers ? handleDuplicate : undefined}
             />
           </div>
         )}

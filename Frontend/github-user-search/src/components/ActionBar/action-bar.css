@@ -29,6 +29,12 @@
   display: none;
 }
 
+.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
 .userCounter {
   display: flex;
   gap: 8px;

@@ -1,16 +1,12 @@
-.home p {
-  text-align: center;
+.home {
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-.cardListContainer {
-  position: fixed;
-  top: 28%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  background-color: var(--white);
-  padding: 16px;
-  overflow-y: auto;
+.home p {
+  text-align: center;
+  margin: 0 16px;
+  padding: 0 16px;
 }
 
 .error {

@@ -65,15 +65,13 @@ const Home = () => {
         error && <ErrorToast message={`${labels.error} ${error}`} />
       )}
       {users && users.length > 0 && !loading ? (
-        <div className="cardListContainer">
-          <CardList
-            users={users}
-            selectedUsers={selectedUsers}
-            setSelectedUsers={setSelectedUsers}
-            isEditing={isEditing}
-            cardListRef={cardListRef}
-          />
-        </div>
+        <CardList
+          users={users}
+          selectedUsers={selectedUsers}
+          setSelectedUsers={setSelectedUsers}
+          isEditing={isEditing}
+          cardListRef={cardListRef}
+        />
       ) : (
         query.length > 0 && !error && !loading && <p>{labels.noUsersFound}</p>
       )}
