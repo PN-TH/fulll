@@ -11,7 +11,7 @@ Make sure you have the following installed on your machine:
 
    ```bash
    git clone https://github.com/PN-TH/fulll.git
-   cd github-user-search
+   cd Frontend/github-user-search
    ```
 
 2. Install the dependencies:
